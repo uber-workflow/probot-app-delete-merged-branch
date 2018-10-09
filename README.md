@@ -1,5 +1,7 @@
 # probot-app-delete-merged-branch
 
+Forked from [https://github.com/SvanBoxel/delete-merged-branch](https://github.com/SvanBoxel/delete-merged-branch)
+
 A GitHub app built with [Probot](https://github.com/probot/probot) that automatically deletes a branch after it's merged.
 
 ## Running it locally
