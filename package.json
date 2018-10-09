@@ -1,12 +1,11 @@
 {
-  "name": "delete-merged-branch",
-  "version": "0.0.0-development",
-  "description": "A GitHub app built that automatically deletes a branch after it's merged. That's it, enjoy!  ",
-  "author": "Sebass van Boxel <svboxel@gmail.com>",
+  "name": "probot-app-delete-merged-branch",
+  "version": "0.0.0",
+  "description": "A GitHub app built that automatically deletes a branch after it's merged",
+  "author": "Nadiia Dmytrenko <nadiia.dmytrenko@gmail.com>",
   "license": "ISC",
-  "repository": "https://github.com/SvanBoxel/delete-merged-branch.git",
-  "homepage": "https://github.com/SvanBoxel/delete-merged-branch",
-  "bugs": "https://github.com/SvanBoxel/delete-merged-branchissues",
+  "repository": "https://github.com/uber-workflow/probot-app-delete-merged-branch.git",
+  "homepage": "https://github.com/uber-workflow/probot-app-delete-merged-branch",
   "keywords": [
     "probot",
     "github",
@@ -16,7 +15,6 @@
     "github-app"
   ],
   "scripts": {
-    "now-start": "PRIVATE_KEY=$(echo $PRIVATE_KEY | base64 -d) npm start",
     "dev": "nodemon --exec \"npm start\"",
     "start": "probot run ./index.js",
     "lint": "standard --fix",
@@ -26,7 +24,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "probot": "7.2.0"
+    "probot": "^7.2.0"
   },
   "devDependencies": {
     "codecov": "3.1.0",
@@ -37,7 +35,7 @@
     "standard": "12.0.0"
   },
   "engines": {
-    "node": ">= 8.3.0"
+    "node": ">= 8.9.0"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
@@ -51,15 +49,6 @@
     "publish": [
       "@semantic-release/github"
     ]
-  },
-  "now": {
-    "alias": "delete-merged-branch",
-    "env": {
-      "APP_ID": "@app_id",
-      "NODE_ENV": "production",
-      "PRIVATE_KEY": "@private_key",
-      "WEBHOOK_SECRET": "@webhook_secret"
-    }
   },
   "standard": {
     "env": [
