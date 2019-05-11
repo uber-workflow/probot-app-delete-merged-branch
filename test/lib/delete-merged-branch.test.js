@@ -3,13 +3,13 @@ const payload = require('../fixtures/pull-request.closed')
 
 describe('deleteMergedBranch function', () => {
   let context
-  let deleteReference
+  let deleteRef
   let owner
   let ref
   let repo
 
   beforeEach(() => {
-    deleteReference = jest.fn().mockReturnValue(Promise.resolve())
+    deleteRef = jest.fn().mockReturnValue(Promise.resolve())
     context = {
       log: {
         info: jest.fn(),
@@ -21,7 +21,7 @@ describe('deleteMergedBranch function', () => {
       payload: JSON.parse(JSON.stringify(payload)), // Njeh...
       github: {
         gitdata: {
-          deleteReference
+          deleteRef
         }
       }
     }
@@ -42,8 +42,8 @@ describe('deleteMergedBranch function', () => {
       expect(context.log.info).toBeCalledWith(`Closing PR from fork. Keeping ${context.payload.pull_request.head.label}`)
     })
 
-    it('should NOT call the deleteReference method', () => {
-      expect(context.github.gitdata.deleteReference).not.toHaveBeenCalled()
+    it('should NOT call the deleteRef method', () => {
+      expect(context.github.gitdata.deleteRef).not.toHaveBeenCalled()
     })
   })
 
@@ -53,8 +53,8 @@ describe('deleteMergedBranch function', () => {
       await deleteMergedBranch(context)
     })
 
-    it('should call the deleteReference method', () => {
-      expect(context.github.gitdata.deleteReference).toHaveBeenCalledWith({
+    it('should call the deleteRef method', () => {
+      expect(context.github.gitdata.deleteRef).toHaveBeenCalledWith({
         owner,
         ref: `heads/${ref}`,
         repo
@@ -65,9 +65,9 @@ describe('deleteMergedBranch function', () => {
       expect(context.log.info).toBeCalledWith(`Successfully deleted ${owner}/${repo}/heads/${ref}`)
     })
 
-    describe('deleteReference call fails', () => {
+    describe('deleteRef call fails', () => {
       beforeEach(async () => {
-        context.github.gitdata.deleteReference = jest.fn().mockReturnValue(Promise.reject(new Error()))
+        context.github.gitdata.deleteRef = jest.fn().mockReturnValue(Promise.reject(new Error()))
         await deleteMergedBranch(context)
       })
 
@@ -87,8 +87,8 @@ describe('deleteMergedBranch function', () => {
       expect(context.log.info).toBeCalledWith(`PR was closed but not merged. Keeping ${owner}/${repo}/heads/${ref}`)
     })
 
-    it('should NOT call the deleteReference method', () => {
-      expect(context.github.gitdata.deleteReference).not.toHaveBeenCalled()
+    it('should NOT call the deleteRef method', () => {
+      expect(context.github.gitdata.deleteRef).not.toHaveBeenCalled()
     })
   })
 })
