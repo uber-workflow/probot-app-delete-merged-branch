@@ -1,6 +1,7 @@
 node_modules
 npm-debug.log
-*.pem
+./*.pem
+!__tests__/__fixtures__/mock-cert.pem
 .env
 package-lock.json
 coverage
