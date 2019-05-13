@@ -1,6 +1,6 @@
 {
   "name": "probot-app-delete-merged-branch",
-  "version": "1.0.1",
+  "version": "1.0.2-0",
   "description": "A GitHub app built that automatically deletes a branch after it's merged",
   "author": "Nadiia Dmytrenko <nadiia.dmytrenko@gmail.com>",
   "license": "ISC",
